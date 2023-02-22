@@ -1,0 +1,40 @@
+git 
+
+git init
+(초기세팅)
+
+git add .
+(다 올리기)
+git add [파일명]
+
+add안되면
+git remote add origin [내깃헙주소]
+(잘됐는지확인)
+git remote -v
+
+LF 
+오류 뜨면
+
+git config --global core.autocrlf true
+
+
+git add [파일명]
+
+git commit -m "커밋명"
+
+git push origin master
+
+
+취소관련
+https://gmlwjd9405.github.io/2018/05/25/git-add-cancle.html
+
+add 취소
+git reset HEAD [파일명]
+
+commit 취소
+git reset HEAD^
+git reset HEAD~2 (마지막 두개의 커밋을 취소)
+
+push 취소
+머라하는데 아직 잘 모르겠다.
+
