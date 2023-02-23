@@ -13,7 +13,7 @@ git remote add origin [내깃헙주소]
 git remote -v
 
 LF 
-오류 뜨면
+오류 뜨면g
 
 git config --global core.autocrlf true
 
@@ -37,4 +37,6 @@ git reset HEAD~2 (마지막 두개의 커밋을 취소)
 
 push 취소
 머라하는데 아직 잘 모르겠다.
+
+
 
