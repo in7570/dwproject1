@@ -1,0 +1,31 @@
+pip install
+konlpy (Okt) <- 형태소, 어간
+openpyxl < - xlsx
+pandas <- DataFrame 
+BeautifulSoup4 <-웹 로드?? 뭐더라
+selenium <- webdriver? driver
+re <- re.sub 특수문자제거
+
+확장프로그램
+
+pip version 최신화
+pip install --upgrade pip
+
+/
+py-aiohanspell
+
+hanspell 이랑 비교해봤는데
+더 좋드라~
+부산대 맞춤법검사기가 더 좋드라
+
+엑셀 저장 제목
+수집날짜시간+검색키워드+index
+video_info{key,value} 여기에 있음
+info collect
+result = {'수집 날짜': collection_date, '영상 이름': viedo_name,
+              '채널 이름': channel_name, '조회수': views, '게시일': opening_date}
+key 값으로 해서 value뽑아서 쓰면 됨!!
+
+저장
+반복 돌리는 거랑
+워드클라우드
