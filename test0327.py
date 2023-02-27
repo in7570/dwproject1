@@ -60,18 +60,18 @@ def scroll_down(driver):
 
     return 0
 
-# def open_reply(driver):
-#     from selenium.webdriver.common.by import By
+def open_reply(driver):
+    from selenium.webdriver.common.by import By
 
-#     replies = driver.find_elements(By.CLASS_NAME,"more-button")
+    replies = driver.find_elements(By.CLASS_NAME,"more-button")
 
-#     driver.implicitly_wait(10)
+    driver.implicitly_wait(10)
 
-#     for reply in replies:
-#         driver.execute_script("arguments[0].click();", reply)
-#         time.sleep(1.5)
+    for reply in replies:
+        driver.execute_script("arguments[0].click();", reply)
+        time.sleep(1.5)
 
-#     return 0
+    return 0
 
 
 def mrphlAnlys(arr):
@@ -129,18 +129,14 @@ def data_prfct(arr):
 
 
 def save_data(comment_dict, video_info):
-    import csv
-
+    
     filename = video_info['수집 날짜'] + '_' + video_info['검색어']
+    pd_data = {"수집 날짜" : [video_info['수집 날짜']] , "제목" : [video_info['영상 이름']] , "채널" : [video_info['채널 이름']] , "조회수" : [video_info['조회수']] , "게시일" : [video_info["게시일"]]," ":[" "],"word":"count"}
 
-    with open(filename + '.csv', 'w', encoding='utf-8-sig') as f:
-        w = csv.writer(f)
-        if comment_dict != False:
-            w.writerow(comment_dict.keys())
-            w.writerow(comment_dict.values())
-
-        w.writerow(video_info.keys())
-        w.writerow(video_info.values())
+    pd_data.update(comment_dict)
+    youtube_pd = pd.DataFrame(pd_data)
+    youtube_pd = youtube_pd.transpose()
+    youtube_pd.to_csv(filename+'.csv', encoding="utf-8-sig")
 
     return True
 
@@ -176,8 +172,8 @@ def get_comment(driver, index):
         scroll_down(driver)
 
         print("대댓글 열기 시작 :" + time.strftime('%H.%M.%S'))
-        # open_reply(driver)
-        # print("대댓글 열기 종료 :" + time.strftime('%H.%M.%S'))
+        open_reply(driver)
+        print("대댓글 열기 종료 :" + time.strftime('%H.%M.%S'))
 
         ##### 댓글 가져오기#######
 
@@ -303,9 +299,8 @@ try:
     # 구글 데일리 인기 검색어 1위 키워드 추출 후 키워드로 입력
     driver.get(keywordurl)
     driver.implicitly_wait(10)
-    # keyword = driver.find_element(
-    #     By.XPATH, '/html/body/div[3]/div[2]/div/div[2]/div/div[1]/ng-include/div/div/div/div/md-list[1]/feed-item/ng-include/div/div/div[1]/div[2]/div[1]/div/span/a').text
-    keyword = "두간"
+    # keyword = driver.find_element(By.XPATH, '/html/body/div[3]/div[2]/div/div[2]/div/div[1]/ng-include/div/div/div/div/md-list[1]/feed-item/ng-include/div/div/div[1]/div[2]/div[1]/div/span/a').text
+    keyword = "우왁굳"
     # 유튜브 접속
     driver.get(url)
     driver.implicitly_wait(10)
@@ -319,7 +314,7 @@ try:
     driver.implicitly_wait(10)
 
     # 반복 시작-------------------------------------------
-    for i in range(1, 5):
+    for i in range(1, 11):
         get_comment(driver, i)
 
     # # 영상 클릭
